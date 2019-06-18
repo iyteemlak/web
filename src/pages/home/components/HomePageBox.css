@@ -1,0 +1,16 @@
+
+.jumbotron{
+  margin: 20px;
+  border: 1px #ddd solid;
+}
+
+.house-detail-box {
+  position: absolute;
+  width: 30%;
+  top: 0;
+  left: 0;
+}
+
+.add-house {
+  margin-left: 8px;
+}

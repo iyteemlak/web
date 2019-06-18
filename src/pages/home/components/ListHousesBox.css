@@ -1,0 +1,12 @@
+
+.jumbotron{
+  margin: 20px;
+  border: 1px #ddd solid;
+}
+
+.list-houses-box {
+  position: absolute;
+  width: 30%;
+  top: 0;
+  left: 0;
+}

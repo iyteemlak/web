@@ -1,0 +1,15 @@
+
+# ana ozellikler
+- evleri listele (haritada ve tabloda)
+- ev ekleme istegi gonder
+- ev ariyorum (extra)
+
+# ev bilgileri
+- konum (enabled/disabled) -> lokasyon
+- fiyat (enabled/disabled) -> miktar
+- odalar
+- telefon
+- ek aciklama
+
+# ev ariyorum
+kullanicilar istedikleri evi tarif edebilecek ve iletisim bilgilerini birakabilecekler.
