@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useGlobal } from 'reactn'
 import { GoogleMap, useLoadScript } from '@react-google-maps/api'
 
 function Map() {

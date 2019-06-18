@@ -1,9 +1,17 @@
-import React from 'react';
+import React, { setGlobal } from 'reactn';
 import ReactDOM from 'react-dom';
 import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+
+setGlobal({
+  activeBox: "HomePageBox",
+  activeHouse: {
+    name: "deneme",
+    price: 1000
+  }
+});
 
 ReactDOM.render(<App />, document.getElementById('root'));
 

@@ -3,9 +3,10 @@ import React from 'react';
 import { Button } from "react-bootstrap";
 import { FaChevronLeft } from "react-icons/fa"
 
-function BackButton() {
+function BackButton(props) {
   return (
     <Button 
+    onClick={props.onClick}
       variant="primary"
       style={{
         position: "absolute",
@@ -16,6 +17,5 @@ function BackButton() {
     </Button>
   );
 }
-
 
 export default BackButton;

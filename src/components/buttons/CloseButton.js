@@ -3,9 +3,10 @@ import React from 'react';
 import { Button } from "react-bootstrap";
 import { FaTimes } from "react-icons/fa"
 
-function CloseButton() {
+function CloseButton(props) {
   return (
-    <Button 
+    <Button
+      onClick={props.onClick}
       variant="primary"
       style={{
         position: "absolute",
@@ -16,6 +17,5 @@ function CloseButton() {
     </Button>
   );
 }
-
 
 export default CloseButton;
