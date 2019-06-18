@@ -12,11 +12,10 @@ function HouseDetailBox() {
     return (
       <Jumbotron className="home-page-box">
         <CloseButton onClick={() => setActiveHouse(null)}/>
-        <h1>Ev deneme</h1>
-        <p>
-          Aciklama
-        </p>
-        <Button variant="primary">Learn more</Button>
+        <p>Odalar: {activeHouse.rooms}</p>
+        <p>Fiyat: {activeHouse.price}</p>
+        <p>Iletisim: {activeHouse.contact}</p>
+        <p>Ek aciklamalar: {activeHouse.description}</p>
       </Jumbotron>
     )
   } else {

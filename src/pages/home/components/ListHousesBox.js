@@ -6,7 +6,10 @@ import BackButton from "../../../components/buttons/BackButton"
 
 function ListHousesBox() {
 
+  const [ map, setMap ] = useGlobal('map')
   const [ activeBox, setActiveBox ] = useGlobal('activeBox')
+  const [ activeHouse, setActiveHouse ] = useGlobal('activeHouse')
+  const [ allHouses, setAllHouses ] = useGlobal('allHouses')
 
   if(activeBox === 'ListHousesBox') {
     return (
@@ -14,9 +17,21 @@ function ListHousesBox() {
         <BackButton onClick={() => setActiveBox('HomePageBox')} />
         <h1>Evler</h1>
         <ul>
-          <li>ev 1</li>
-          <li>ev 2</li>
-          <li>ev 3</li>
+          {allHouses.map(house => {
+            return (
+              <li style={{lineHeight: "40px", marginBottom: "8px"}}>
+                {house.rooms}, {house.price}TL 
+                <Button 
+                  style={{float: "right"}} 
+                  onClick={() => {
+                    setActiveHouse(house)
+                    map.panTo(house.location)
+                  }}>
+                  Haritada Goster
+                </Button>
+              </li>
+            )
+          })}
         </ul>
       </Jumbotron>
     )

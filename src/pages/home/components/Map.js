@@ -1,7 +1,12 @@
 import React, { useGlobal } from 'reactn'
-import { GoogleMap, useLoadScript } from '@react-google-maps/api'
+import { GoogleMap, useLoadScript, Marker } from '@react-google-maps/api'
 
 function Map() {
+
+  const [ center, setCenter ] = useGlobal('center');
+  const [ map, setMap ] = useGlobal('map');
+  const [ allHouses, setAllHouses ] = useGlobal('allHouses');
+  const [ activeHouse, setActiveHouse ] = useGlobal('activeHouse');
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCGT2oqCkTQBBIFmkyiKIwDMVtY3cJclDY"
@@ -13,6 +18,7 @@ function Map() {
     // feel free to render directly if you don't need that
     return <GoogleMap
       id='map'
+      onLoad={(map) => setMap(map)}
       mapContainerStyle={{
         position: "absolute",
         top: 0,
@@ -21,16 +27,16 @@ function Map() {
         width: "100%"
       }}
       zoom={15}
-      center={{
-        lat: 38.3322481,
-        lng: 26.6346842
-      }}
+      center={center}
+      onCenterChanged={() => setCenter(map.getCenter())}
       options={{
         mapTypeControl: false,
         fullscreenControl: false
       }}
     >
-      ...Your map components
+      {allHouses.map(house => {
+        return <Marker onClick={e => setActiveHouse(house)} position={house.location} />
+      })}
     </GoogleMap>
   }
 
