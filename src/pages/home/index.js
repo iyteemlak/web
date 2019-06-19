@@ -23,7 +23,6 @@ function HomePage() {
     <>
       <Map />
       <div className="home-page">
-        {process.env.NODE_ENV}
         <HomePageBox />
         <ListHousesBox />
         <AddHouseBox />

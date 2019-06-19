@@ -20,67 +20,75 @@ function AddHouseBox() {
   const [ price, setPrice ] = useState("");
   const [ contact, setContact ] = useState("");
   const [ description, setDescription ] = useState("");
+  const [ response, setResponse ] = useState(null);
 
   if(activeBox === "AddHouseBox") {
     return (
       <Jumbotron className="list-houses-box">
-        <BackButton onClick={() => setActiveBox('HomePageBox')} />
-        <h1>Ev Ekle</h1>
-        <Form>
-          <Form.Group controlId="formRooms">
-            <Form.Label>Oda Sayisi</Form.Label>
-            <Form.Control as="select" value={selectedRoom} onChange={e => setSelectedRoom(e.target.value)}>
-              {ROOMS.map((room, index) => <option key={index}>{room}</option>)}
-            </Form.Control>
-          </Form.Group>
-          <Form.Group controlId="formPrice">
-            <Form.Label>Fiyat</Form.Label>
-            <Form.Control type="number" placeholder="500" value={price} onChange={e => setPrice(e.target.value)} />
-          </Form.Group>
-          <Form.Group controlId="formContact">
-            <Form.Label>Iletisim</Form.Label>
-            <Form.Control type="text" placeholder="telefon no veya e-posta adresi"
-              value={contact} onChange={e => setContact(e.target.value)} />
-          </Form.Group>
-          <Form.Group controlId="formDescription">
-            <Form.Label>Ek Aciklamalar</Form.Label>
-            <Form.Control as="textarea" rows="3" value={description} onChange={e => setDescription(e.target.value)} />
-          </Form.Group>
-          <Form.Group controlId="formLocation">
-            <Form.Label>Lokasyon</Form.Label>
-            <Form.Check type="checkbox" checked={addHouseLocation != null} label={addHouseLocation != null ? "Secildi" : "Secilmedi"} readOnly />
-          </Form.Group>
-          <Button variant="primary" onClick={() => {
-            let location = addHouseLocation == null ? null : {
-              lat: addHouseLocation.lat(),
-              lng: addHouseLocation.lng()
-            }
-            fetch(`${API_URL}/house`, {
-              method: "POST",
-              headers: {
-                Accept: "application/json",
-                "Content-Type": "application/json"
-              },
-              body: JSON.stringify({
-                rooms: selectedRoom,
-                price,
-                contact,
-                description,
-                location
-              })
-            }).then(res => {
-              if (!res.ok) 
-                throw res;
-              console.log("house succesfully added!");
-              // TODO: show notification pop-up
-            })
-            // .catch(err => {
-            //   err.text().then(text => createNotification(text, "danger", this.refs.notify));
-            // });
-          }}>
-            Ekle
-          </Button>
-        </Form>
+        <BackButton onClick={() => {
+            setResponse(null)
+            setActiveBox('HomePageBox')
+          }} />
+        { response === null ? (
+          <div>
+            <h1>Ev Ekle</h1>
+            <Form>
+              <Form.Group controlId="formRooms">
+                <Form.Label>Oda Sayisi</Form.Label>
+                <Form.Control as="select" value={selectedRoom} onChange={e => setSelectedRoom(e.target.value)}>
+                  {ROOMS.map((room, index) => <option key={index}>{room}</option>)}
+                </Form.Control>
+              </Form.Group>
+              <Form.Group controlId="formPrice">
+                <Form.Label>Fiyat</Form.Label>
+                <Form.Control type="number" placeholder="500" value={price} onChange={e => setPrice(e.target.value)} />
+              </Form.Group>
+              <Form.Group controlId="formContact">
+                <Form.Label>Iletisim</Form.Label>
+                <Form.Control type="text" placeholder="telefon no veya e-posta adresi"
+                  value={contact} onChange={e => setContact(e.target.value)} />
+              </Form.Group>
+              <Form.Group controlId="formDescription">
+                <Form.Label>Ek Aciklamalar</Form.Label>
+                <Form.Control as="textarea" rows="3" value={description} onChange={e => setDescription(e.target.value)} />
+              </Form.Group>
+              <Form.Group controlId="formLocation">
+                <Form.Label>Lokasyon</Form.Label>
+                <Form.Check type="checkbox" checked={addHouseLocation != null} label={addHouseLocation != null ? "Secildi" : "Secilmedi"} readOnly />
+              </Form.Group>
+              <Button variant="primary" onClick={() => {
+                let location = addHouseLocation == null ? null : {
+                  lat: addHouseLocation.lat(),
+                  lng: addHouseLocation.lng()
+                }
+                fetch(`${API_URL}/house`, {
+                  method: "POST",
+                  headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify({
+                    rooms: selectedRoom,
+                    price,
+                    contact,
+                    description,
+                    location
+                  })
+                }).then(res => {
+                  if (!res.ok) 
+                    throw res;
+                  setResponse("Ev ekleme isteginiz incelemeye alindi.");
+                }).catch(err => {
+                  setResponse("error code: " + err.status)
+                });
+              }}>
+                Ekle
+              </Button> 
+            </Form>
+          </div>
+        ) : (
+          <div>{response}</div>
+        )}
       </Jumbotron>
     )
   } else {
