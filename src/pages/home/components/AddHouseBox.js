@@ -78,6 +78,11 @@ function AddHouseBox() {
                   if (!res.ok) 
                     throw res;
                   setResponse("Ev ekleme isteginiz incelemeye alindi.");
+                  setSelectedRoom(ROOMS[0])
+                  setPrice("")
+                  setContact("")
+                  setDescription("")
+                  setAddHouseLocation(null)
                 }).catch(err => {
                   setResponse("error code: " + err.status)
                 });
