@@ -17,9 +17,9 @@ function ListHousesBox() {
         <BackButton onClick={() => setActiveBox('HomePageBox')} />
         <h1>Evler</h1>
         <ul>
-          {allHouses.map(house => {
+          {allHouses.map((house, index) => {
             return (
-              <li style={{lineHeight: "40px", marginBottom: "8px"}}>
+              <li key={index} style={{lineHeight: "40px", marginBottom: "8px"}}>
                 {house.rooms}, {house.price}TL
                 {house.location != null ? (
                   <Button 

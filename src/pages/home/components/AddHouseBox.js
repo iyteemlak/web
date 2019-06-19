@@ -15,9 +15,9 @@ function AddHouseBox() {
   const [ addHouseLocation, setAddHouseLocation ] = useGlobal('addHouseLocation')
 
   const [ selectedRoom, setSelectedRoom ] = useState(ROOMS[0]);
-  const [ price, setPrice ] = useState(null);
-  const [ contact, setContact ] = useState(null);
-  const [ description, setDescription ] = useState(null);
+  const [ price, setPrice ] = useState("");
+  const [ contact, setContact ] = useState("");
+  const [ description, setDescription ] = useState("");
 
   if(activeBox === "AddHouseBox") {
     return (
@@ -46,9 +46,35 @@ function AddHouseBox() {
           </Form.Group>
           <Form.Group controlId="formLocation">
             <Form.Label>Lokasyon</Form.Label>
-            <Form.Check type="checkbox" checked={addHouseLocation != null} label={addHouseLocation != null ? "Secildi" : "Secilmedi"} />
+            <Form.Check type="checkbox" checked={addHouseLocation != null} label={addHouseLocation != null ? "Secildi" : "Secilmedi"} readOnly />
           </Form.Group>
-          <Button variant="primary" type="submit">
+          <Button variant="primary" onClick={() => {
+            let location = addHouseLocation == null ? null : {
+              lat: addHouseLocation.lat(),
+              lng: addHouseLocation.lng()
+            }
+            fetch(`http://localhost:8082/house`, {
+              method: "POST",
+              headers: {
+                Accept: "application/json",
+                "Content-Type": "application/json"
+              },
+              body: JSON.stringify({
+                rooms: selectedRoom,
+                price,
+                contact,
+                description,
+                location
+              })
+            }).then(res => {
+              if (!res.ok) 
+                throw res;
+              console.log("house succesfully added!");
+            })
+            // .catch(err => {
+            //   err.text().then(text => createNotification(text, "danger", this.refs.notify));
+            // });
+          }}>
             Ekle
           </Button>
         </Form>

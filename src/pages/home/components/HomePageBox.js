@@ -11,6 +11,7 @@ function HomePageBox() {
     return (
       <Jumbotron className="house-detail-box">
         <h1>Iyte Emlak</h1>
+        <h4>alpha</h4>
         <p>
           Bu site Iyteli arkadaslarimizin gulbahce cevresinde ev bulma problemini gidermek icin Iyteliler tarafindan yapilmistir. Her turlu gorus, oneri ve yardimlariniza acigiz. Eklenen evler moderatorler tarafindan incelendikten sonra sisteme eklenecektir.
         </p>
