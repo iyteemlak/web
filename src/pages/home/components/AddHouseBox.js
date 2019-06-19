@@ -1,7 +1,7 @@
 import React, { useGlobal, useState } from 'reactn'
 import "./AddHouseBox.css"
 
-import { Jumbotron, InputGroup, FormControl, Button, Form } from "react-bootstrap"
+import { Jumbotron, Button, Form } from "react-bootstrap"
 import BackButton from "../../../components/buttons/BackButton"
 
 const ROOMS = [ "Studyo (1+0)", "1+1", "1.5+1", "2+0", "2+1", "2.5+1", "2+2", "3+1", "3.5+1", "3+2", 
@@ -28,7 +28,7 @@ function AddHouseBox() {
           <Form.Group controlId="formRooms">
             <Form.Label>Oda Sayisi</Form.Label>
             <Form.Control as="select" value={selectedRoom} onChange={e => setSelectedRoom(e.target.value)}>
-              {ROOMS.map(room => <option>{room}</option>)}
+              {ROOMS.map((room, index) => <option key={index}>{room}</option>)}
             </Form.Control>
           </Form.Group>
           <Form.Group controlId="formPrice">

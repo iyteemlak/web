@@ -37,8 +37,11 @@ function Map() {
         fullscreenControl: false
       }}
     >
-      {allHouses.map(house => {
-        return <Marker onClick={e => setActiveHouse(house)} position={house.location} />
+      {allHouses.map((house, index) => {
+        if (house.location != null)
+          return <Marker key={index} onClick={e => setActiveHouse(house)} position={house.location} />
+        else
+          return null
       })}
       {activeBox === "AddHouseBox" && addHouseLocation !== null ? 
         <Marker 

@@ -21,14 +21,20 @@ function ListHousesBox() {
             return (
               <li style={{lineHeight: "40px", marginBottom: "8px"}}>
                 {house.rooms}, {house.price}TL
-                <Button 
-                  style={{float: "right"}} 
-                  onClick={() => {
-                    setActiveHouse(house)
-                    map.panTo(house.location)
-                  }}>
-                  Haritada Goster
-                </Button>
+                {house.location != null ? (
+                  <Button 
+                    style={{float: "right"}} 
+                    onClick={() => {
+                      setActiveHouse(house)
+                      map.panTo(house.location)
+                    }}>
+                    Haritada Goster
+                  </Button>
+                ) : (
+                  <Button style={{float: "right"}} onClick={() => setActiveHouse(house)}>
+                    Aciklamalar
+                  </Button>
+                )}
               </li>
             )
           })}

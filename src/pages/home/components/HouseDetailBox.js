@@ -6,6 +6,7 @@ import CloseButton from "../../../components/buttons/CloseButton"
 
 function HouseDetailBox() {
 
+  const [ map, setMap ] = useGlobal('map')
   const [ activeHouse, setActiveHouse ] = useGlobal('activeHouse')
 
   if (activeHouse != null) {
@@ -16,6 +17,11 @@ function HouseDetailBox() {
         <p>Fiyat: {activeHouse.price}TL</p>
         <p>Iletisim: {activeHouse.contact}</p>
         <p>Ek aciklamalar: {activeHouse.description}</p>
+        {activeHouse.location != null &&
+          <Button onClick={() => map.panTo(activeHouse.location)}>
+            Haritada Goster
+          </Button>
+        }
       </Jumbotron>
     )
   } else {

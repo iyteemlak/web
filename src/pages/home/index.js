@@ -1,4 +1,4 @@
-import React, { useGlobal } from 'reactn';
+import React, { useGlobal, useEffect } from 'reactn';
 import "./main.css";
 
 import Map from "./components/Map";
@@ -9,8 +9,14 @@ import HouseDetailBox from "./components/HouseDetailBox";
 
 function HomePage() {
 
-  const [ activeBox, setActiveBox ] = useGlobal('activeBox');
+  const [ allHouses, setAllHouses ] = useGlobal('allHouses');
   
+  useEffect(() => {
+    fetch("http://localhost:8082/house")
+    .then(response => response.json())
+    .then(json => setAllHouses(json))
+  }, []);
+
   return (
     <>
       <Map />
