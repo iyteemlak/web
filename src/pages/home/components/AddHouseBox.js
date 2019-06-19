@@ -4,6 +4,8 @@ import "./AddHouseBox.css"
 import { Jumbotron, Button, Form } from "react-bootstrap"
 import BackButton from "../../../components/buttons/BackButton"
 
+import { API_URL } from "../../../Const";
+
 const ROOMS = [ "Studyo (1+0)", "1+1", "1.5+1", "2+0", "2+1", "2.5+1", "2+2", "3+1", "3.5+1", "3+2", 
   "4+1", "4.5+1", "4+2", "4+3", "4+4", "5+1", "5+2", "5+3", "5+4", "6+1", "6+2", "6+3", "7+1", "7+2",
   "7+3", "8+1", "8+2", "8+3", "8+4", "9+1", "9+2", "9+3", "9+4", "9+5", "9+6", "10+1", "10+2", "10 Uzeri"
@@ -53,7 +55,7 @@ function AddHouseBox() {
               lat: addHouseLocation.lat(),
               lng: addHouseLocation.lng()
             }
-            fetch(`http://localhost:8082/house`, {
+            fetch(`${API_URL}/house`, {
               method: "POST",
               headers: {
                 Accept: "application/json",
@@ -70,6 +72,7 @@ function AddHouseBox() {
               if (!res.ok) 
                 throw res;
               console.log("house succesfully added!");
+              // TODO: show notification pop-up
             })
             // .catch(err => {
             //   err.text().then(text => createNotification(text, "danger", this.refs.notify));

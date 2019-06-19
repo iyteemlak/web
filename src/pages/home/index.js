@@ -7,12 +7,14 @@ import ListHousesBox from './components/ListHousesBox';
 import AddHouseBox from './components/AddHouseBox';
 import HouseDetailBox from "./components/HouseDetailBox";
 
+import { API_URL } from "../../Const";
+
 function HomePage() {
 
   const [ allHouses, setAllHouses ] = useGlobal('allHouses');
   
   useEffect(() => {
-    fetch("http://localhost:8082/house")
+    fetch(`${API_URL}/house`)
     .then(response => response.json())
     .then(json => setAllHouses(json))
   }, []);
