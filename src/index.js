@@ -7,21 +7,11 @@ import 'bootstrap/dist/css/bootstrap.css';
 
 setGlobal({
   center: {
-    lat: 38.3322481,
-    lng: 26.6346842
+    lat: 38.332282,
+    lng: 26.643439
   },
   activeBox: "HomePageBox",
-  activeHouse: {
-    id: 1,
-    location: {
-      lat: 38.3322481,
-      lng: 26.6346842
-    },
-    rooms: "3+1",
-    price: 200,
-    contact: "+90 (507) 153 76 81",
-    description: "asdasd"
-  },
+  activeHouse: null,
   allHouses: [
     {
       id: 1,
@@ -45,7 +35,8 @@ setGlobal({
       contact: "+90 (507) 153 76 81",
       description: "asdlhfgsdfjasdfd"
     },
-  ]
+  ],
+  addHouseLocation: null
 });
 
 

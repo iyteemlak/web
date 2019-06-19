@@ -7,6 +7,8 @@ function Map() {
   const [ map, setMap ] = useGlobal('map');
   const [ allHouses, setAllHouses ] = useGlobal('allHouses');
   const [ activeHouse, setActiveHouse ] = useGlobal('activeHouse');
+  const [ addHouseLocation, setAddHouseLocation ] = useGlobal('addHouseLocation');
+  const [ activeBox, setActiveBox ] = useGlobal('activeBox')
 
   const { isLoaded, loadError } = useLoadScript({
     googleMapsApiKey: "AIzaSyCGT2oqCkTQBBIFmkyiKIwDMVtY3cJclDY"
@@ -28,6 +30,7 @@ function Map() {
       }}
       zoom={15}
       center={center}
+      onClick={e => activeBox === "AddHouseBox" && setAddHouseLocation(e.latLng)}
       onCenterChanged={() => setCenter(map.getCenter())}
       options={{
         mapTypeControl: false,
@@ -37,6 +40,14 @@ function Map() {
       {allHouses.map(house => {
         return <Marker onClick={e => setActiveHouse(house)} position={house.location} />
       })}
+      {activeBox === "AddHouseBox" && addHouseLocation !== null ? 
+        <Marker 
+          onClick={e => setAddHouseLocation(null)} 
+          position={addHouseLocation} 
+          icon={{
+            url: "http://maps.google.com/mapfiles/ms/icons/blue-dot.png",
+          }} />
+        : null }
     </GoogleMap>
   }
 

@@ -20,7 +20,7 @@ function ListHousesBox() {
           {allHouses.map(house => {
             return (
               <li style={{lineHeight: "40px", marginBottom: "8px"}}>
-                {house.rooms}, {house.price}TL 
+                {house.rooms}, {house.price}TL
                 <Button 
                   style={{float: "right"}} 
                   onClick={() => {

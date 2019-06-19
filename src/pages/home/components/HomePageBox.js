@@ -12,7 +12,7 @@ function HomePageBox() {
       <Jumbotron className="house-detail-box">
         <h1>Iyte Emlak</h1>
         <p>
-          Bu site iyteli arkadaslarimizin gulbahce cevresinde ev bulma problemini gidermek icin yapilmistir.
+          Bu site Iyteli arkadaslarimizin gulbahce cevresinde ev bulma problemini gidermek icin Iyteliler tarafindan yapilmistir. Her turlu gorus, oneri ve yardimlariniza acigiz. Eklenen evler moderatorler tarafindan incelendikten sonra sisteme eklenecektir.
         </p>
         <Button className="list-houses" variant="primary" onClick={() => setActiveBox('ListHousesBox')}>Evleri Listele</Button>
         <Button className="add-house" variant="primary" onClick={() => setActiveBox('AddHouseBox')}>Ev ekle</Button>

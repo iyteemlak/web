@@ -13,7 +13,7 @@ function HouseDetailBox() {
       <Jumbotron className="home-page-box">
         <CloseButton onClick={() => setActiveHouse(null)}/>
         <p>Odalar: {activeHouse.rooms}</p>
-        <p>Fiyat: {activeHouse.price}</p>
+        <p>Fiyat: {activeHouse.price}TL</p>
         <p>Iletisim: {activeHouse.contact}</p>
         <p>Ek aciklamalar: {activeHouse.description}</p>
       </Jumbotron>
