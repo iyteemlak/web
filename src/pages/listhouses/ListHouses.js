@@ -3,7 +3,7 @@ import "./ListHouses.css"
 
 import { Button, Table } from "react-bootstrap"
 import { Link } from 'react-router-dom';
-import { FaMapMarkerAlt } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaMapMarkedAlt } from 'react-icons/fa'
 
 function ListHousesBox() {
 
@@ -18,7 +18,7 @@ function ListHousesBox() {
 
   return (
     <div className="list-houses-container">
-      <h1 className="header">İyte Emlak</h1>
+      <h1 className="header"><FaMapMarkedAlt style={{marginTop: "-8px"}}/> İyte Emlak</h1>
       <div className="add-house">
         <Link to="/ekle">Ev Ekle</Link>
       </div>
@@ -26,7 +26,7 @@ function ListHousesBox() {
         <Table responsive hover>
           <thead>
             <tr>
-              <th>Oda Sayısı</th>
+              <th>Odalar</th>
               <th>Fiyat</th>
               <th>İletişim</th>
               <th>Açıklamalar</th>

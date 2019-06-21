@@ -3,4 +3,32 @@
   float: left;
   width: 50%;
   height: 100%;
+  overflow: scroll;
+}
+
+tr {
+  line-height: 36px;
+}
+
+@media (max-width: 765px) {
+  .route-container, #map {
+    width: 100%;
+    height: 50%;
+  }
+
+  thead {
+    font-size: 14px;
+  }
+
+  tbody {
+    font-size: 14px;
+  }
+
+  tr {
+    line-height: 1.5;
+  }
+
+  td {
+    padding: 4px !important;
+  }
 }
