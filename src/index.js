@@ -1,16 +1,15 @@
 import React, { setGlobal } from 'reactn';
 import ReactDOM from 'react-dom';
-import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 import 'bootstrap/dist/css/bootstrap.css';
+import './index.css';
 
 setGlobal({
   center: {
     lat: 38.332282,
     lng: 26.643439
   },
-  activeBox: "HomePageBox",
   activeHouse: null,
   allHouses: [],
   addHouseLocation: null

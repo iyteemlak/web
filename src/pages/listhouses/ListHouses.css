@@ -1,0 +1,27 @@
+
+.list-houses-container {
+  padding: 20px;
+}
+
+.header {
+  margin-top: 12px;
+  margin-bottom: 12px;
+  text-align: center;
+}
+
+.add-house {
+  text-align: center;
+  margin: 12px 0;
+}
+
+.table-container {
+  text-align: center;
+}
+
+.button-col {
+  width: 1px;
+}
+
+tr {
+  line-height: 36px;
+}
