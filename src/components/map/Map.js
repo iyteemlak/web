@@ -55,6 +55,7 @@ function Map() {
               padding: "15px",
               fontSize: "1rem",
               lineHeight: "1.5rem",
+              overflow: "scroll"
             }}>
               <b>Odalar:</b> {activeHouse.rooms}<br/>
               <b>Fiyat:</b> {activeHouse.price}TL<br/>
