@@ -27,7 +27,10 @@ function Map() {
       }}
     >
       {allHouses.map((house, index) => {
-        return house.location != null && <Marker key={index} onClick={e => activeHouse == null ? setActiveHouse(house) : setActiveHouse(null)} position={house.location} />
+        return house.location != null && 
+        <Marker 
+          key={index} 
+          onClick={e => activeHouse != null && activeHouse === house ? setActiveHouse(null) : setActiveHouse(house)} position={house.location} />
       })}
       {addHouseLocation !== null &&
         <Marker

@@ -1,9 +1,9 @@
-import React, { useGlobal } from 'reactn'
+import React, { useGlobal, useState } from 'reactn'
 import "./ListHouses.css"
 
 import { Button, Table } from "react-bootstrap"
 import { Link } from 'react-router-dom';
-import { FaMapMarkerAlt, FaMapMarkedAlt } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaMapMarkedAlt, FaCaretUp, FaCaretDown } from 'react-icons/fa'
 
 function ListHousesBox() {
 
@@ -11,14 +11,47 @@ function ListHousesBox() {
   const [ activeHouse, setActiveHouse ] = useGlobal('activeHouse')
   const [ map, setMap ] = useGlobal('map')
 
+  const [ roomSort, setRoomSort ] = useState(null);
+  const [ priceSort, setPriceSort ] = useState(null);
+
   const panTo = (house) => {
     setActiveHouse(house)
     map.panTo(house.location)
   }
 
+  const nextSorting = (sort) => {
+    if (sort == 'asc') {
+      return 'desc'
+    } else if (sort == 'desc') {
+      return null
+    } else {
+      return 'asc'
+    }
+  }
+
+  const sortRooms = (houses) => {
+    if (roomSort === 'asc') {
+      return houses.sort((e1, e2) => e1.rooms > e2.rooms ? 1 : -1)
+    } else if (roomSort === 'desc') {
+      return houses.sort((e1, e2) => e2.rooms > e1.rooms ? 1 : -1)
+    } else {
+      return houses
+    }
+  }
+
+  const sortPrice = (houses) => {
+    if (priceSort === 'asc') {
+      return houses.sort((e1, e2) => e1.price - e2.price)
+    } else if (priceSort === 'desc') {
+      return houses.sort((e1, e2) => e2.price - e1.price)
+    } else {
+      return houses
+    }
+  }
+
   return (
     <div className="list-houses-container">
-      <h1 className="header"><FaMapMarkedAlt style={{marginTop: "-8px"}}/> İyte Emlak</h1>
+      <h1 className="header"><FaMapMarkedAlt className="icon" /> İyte Emlak</h1>
       <div className="add-house">
         <Link to="/ekle">Ev Ekle</Link>
       </div>
@@ -26,21 +59,25 @@ function ListHousesBox() {
         <Table responsive hover>
           <thead>
             <tr>
-              <th>Odalar</th>
-              <th>Fiyat</th>
+              <th onClick={() => {
+                setRoomSort(nextSorting(roomSort))
+                setPriceSort(null)
+              }}>Odalar {roomSort === 'asc' ? <FaCaretUp /> : (roomSort === 'desc' ? <FaCaretDown /> : null)}</th>
+              <th onClick={() => {
+                setPriceSort(nextSorting(priceSort))
+                setRoomSort(null)
+              }}>Fiyat {priceSort === 'asc' ? <FaCaretUp /> : (priceSort === 'desc' ? <FaCaretDown /> : null)}</th>
               <th>İletişim</th>
-              <th>Açıklamalar</th>
               <th className="button-col"/>
             </tr>
           </thead>
           <tbody>
-            {allHouses.map((house, index) => {
+            {sortPrice(sortRooms(allHouses)).map((house, index) => {
               return (
                 <tr key={index}>
                   <td>{house.rooms}</td>
                   <td>{house.price}TL</td>
                   <td>{house.contact}</td>
-                  <td>{house.description}</td>
                   <td>
                     {house.location != null && 
                       <Button onClick={() => panTo(house)}>

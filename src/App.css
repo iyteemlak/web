@@ -1,9 +1,13 @@
 
 .route-container, #map {
   float: left;
-  width: 50%;
+  width: 40%;
   height: 100%;
   overflow: scroll;
+}
+
+#map {
+  width: 60%;
 }
 
 tr {
