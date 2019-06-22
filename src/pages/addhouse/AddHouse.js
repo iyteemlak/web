@@ -53,39 +53,44 @@ function AddHouseBox() {
                 Haritadan evin konumunu seçmeyi unutmayın!
               </Form.Text>
             </Form.Group>
-            <Button variant="primary" disabled={price == "" || contact == ""} onClick={() => {
-              let location = addHouseLocation == null ? null : {
-                lat: addHouseLocation.lat(),
-                lng: addHouseLocation.lng()
-              }
-              fetch(`${API_URL}/house`, {
-                method: "POST",
-                headers: {
-                  Accept: "application/json",
-                  "Content-Type": "application/json"
-                },
-                body: JSON.stringify({
-                  rooms: selectedRoom,
-                  price,
-                  contact,
-                  description,
-                  location
-                })
-              }).then(res => {
-                if (!res.ok) 
-                  throw res;
-                setResponse("Ev ekleme isteginiz incelemeye alindi.");
-                setSelectedRoom(ROOMS[0])
-                setPrice("")
-                setContact("")
-                setDescription("")
-                setAddHouseLocation(null)
-              }).catch(err => {
-                setResponse("error code: " + err.status)
-              });
-            }}>
-              Ekle
-            </Button> 
+            <Form.Group controlId="formSubmit">
+              <Button variant="primary" disabled={price == "" || contact == "" || addHouseLocation == null} onClick={() => {
+                let location = addHouseLocation == null ? null : {
+                  lat: addHouseLocation.lat(),
+                  lng: addHouseLocation.lng()
+                }
+                fetch(`${API_URL}/house`, {
+                  method: "POST",
+                  headers: {
+                    Accept: "application/json",
+                    "Content-Type": "application/json"
+                  },
+                  body: JSON.stringify({
+                    rooms: selectedRoom,
+                    price,
+                    contact,
+                    description,
+                    location
+                  })
+                }).then(res => {
+                  if (!res.ok) 
+                    throw res;
+                  setResponse("Ev ekleme isteginiz incelemeye alindi.");
+                  setSelectedRoom(ROOMS[0])
+                  setPrice("")
+                  setContact("")
+                  setDescription("")
+                  setAddHouseLocation(null)
+                }).catch(err => {
+                  setResponse("error code: " + err.status)
+                });
+              }}>
+                Ekle
+              </Button>
+              <Form.Text className="text-muted">
+                İsteğiniz incelendikten sonra listeye eklenecektir. Evinizi listeden çıkarmak için bize bu adresten ulaşabilirsiniz.
+              </Form.Text>
+            </Form.Group>
           </Form>
         </div>
       ) : (

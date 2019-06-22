@@ -79,7 +79,7 @@ function ListHousesBox() {
                   <td>{house.price}TL</td>
                   <td>{house.contact}</td>
                   <td>
-                    {house.location != null && 
+                    {house.location !== null && house.location.lat !== null && 
                       <Button onClick={() => panTo(house)}>
                         <FaMapMarkerAlt />
                       </Button>
