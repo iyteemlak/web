@@ -31,9 +31,9 @@ function ListHousesBox() {
 
   const sortRooms = (houses) => {
     if (roomSort === 'asc') {
-      return houses.sort((e1, e2) => e1.rooms > e2.rooms ? 1 : -1)
+      return houses.sort((e1, e2) => e1.rooms > e2.rooms ? -1 : 1)
     } else if (roomSort === 'desc') {
-      return houses.sort((e1, e2) => e2.rooms > e1.rooms ? 1 : -1)
+      return houses.sort((e1, e2) => e2.rooms > e1.rooms ? -1 : 1)
     } else {
       return houses
     }
