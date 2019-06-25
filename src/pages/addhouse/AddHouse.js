@@ -88,7 +88,7 @@ function AddHouseBox() {
                 Ekle
               </Button>
               <Form.Text className="text-muted">
-                İsteğiniz incelendikten sonra listeye eklenecektir. Evinizi listeden çıkarmak için bize <a href="mailto:ahmetozdemirden@std.iyte.edu.tr">bu adresten</a> ulaşabilirsiniz.
+                İsteğiniz incelendikten sonra listeye eklenecektir ve 1 hafta içerisinde yayından kaldırılacaktır. Evinizi derhal listeden çıkarmak için bize <a href="mailto:ahmetozdemirden@std.iyte.edu.tr">bu adresten</a> ulaşabilirsiniz.
               </Form.Text>
             </Form.Group>
           </Form>

@@ -1,9 +1,12 @@
 
 .route-container, #map {
   float: left;
-  width: 40%;
   height: 100%;
   overflow: scroll;
+}
+
+.route-container {
+  width: 40%;
 }
 
 #map {
@@ -15,9 +18,14 @@ tr {
 }
 
 @media (max-width: 765px) {
-  .route-container, #map {
+  .route-container {
     width: 100%;
-    height: 50%;
+    height: 60%;
+  }
+
+  #map {
+    width: 100%;
+    height: 40%;
   }
 
   thead {
