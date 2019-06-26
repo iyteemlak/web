@@ -23,7 +23,7 @@ function App() {
       return response.json()
     })
     .then(json => setAllHouses(json))
-    // .catch(err => console.error("error code: " + err.status))
+    .catch(err => console.error("error code: " + err.status))
   }, []);
 
   return (
