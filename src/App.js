@@ -13,8 +13,6 @@ function App() {
 
   const [ allHouses, setAllHouses ] = useGlobal('allHouses');
   
-  // TODO: error handling
-  console.log(API_URL)
   useEffect(() => {
     fetch(`${API_URL}/house`)
     .then(response => {
