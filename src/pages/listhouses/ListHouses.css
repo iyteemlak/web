@@ -21,7 +21,8 @@
 
 .table-container {
   text-align: center;
-  height: calc(100% - 3rem - 72px);
+  height: calc(100% - 4rem - 60px);
+  overflow: auto;
 }
 
 .button-col {
@@ -30,8 +31,9 @@
 
 .footer {
   text-align: center;
-  height: 1.5rem;
-  line-height: 1.5rem;
+  padding-top: 4px;
+  height: 2rem;
+  line-height: 2rem;
   background-color: white;
 }
 
@@ -44,5 +46,5 @@
 }
 
 .icon {
-  font-size: 1.5rem;
+  font-size: 1.25rem;
 }
