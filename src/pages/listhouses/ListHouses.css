@@ -1,5 +1,6 @@
 
 .list-houses-container {
+  height: 100%;
   padding: 20px;
 }
 
@@ -20,8 +21,28 @@
 
 .table-container {
   text-align: center;
+  height: calc(100% - 3rem - 72px);
 }
 
 .button-col {
   width: 1px;
+}
+
+.footer {
+  text-align: center;
+  height: 1.5rem;
+  line-height: 1.5rem;
+  background-color: white;
+}
+
+.icon-container {
+  margin-right: 5px;
+}
+
+.icon-container:last-child {
+  margin-right: 0px;
+}
+
+.icon {
+  font-size: 1.5rem;
 }

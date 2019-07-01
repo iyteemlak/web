@@ -3,7 +3,7 @@ import "./ListHouses.css"
 
 import { Button, Table } from "react-bootstrap"
 import { Link } from 'react-router-dom';
-import { FaMapMarkerAlt, FaMapMarkedAlt, FaCaretUp, FaCaretDown } from 'react-icons/fa'
+import { FaMapMarkerAlt, FaMapMarkedAlt, FaCaretUp, FaCaretDown, FaGithub, FaTrello } from 'react-icons/fa'
 
 function ListHousesBox() {
 
@@ -91,6 +91,10 @@ function ListHousesBox() {
           </tbody>
         </Table>
       </div>
+      <footer className="footer">
+        <a href="https://github.com/iyteemlak" className="icon-container"><FaGithub className="icon" /></a>
+        <a href="https://trello.com/iyteemlakcom" className="icon-container"><FaTrello className="icon" /></a>
+      </footer>
     </div>
   )
 }
