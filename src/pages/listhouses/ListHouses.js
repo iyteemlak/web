@@ -1,4 +1,5 @@
 import React, { useGlobal, useState } from 'reactn'
+import ReactGA from 'react-ga';
 import "./ListHouses.css"
 
 import { Button, Table } from "react-bootstrap"
@@ -6,6 +7,8 @@ import { Link } from 'react-router-dom';
 import { FaMapMarkerAlt, FaMapMarkedAlt, FaCaretUp, FaCaretDown, FaGithub, FaTrello } from 'react-icons/fa'
 
 function ListHousesBox() {
+
+  ReactGA.pageview('/');
 
   const [ allHouses, setAllHouses ] = useGlobal('allHouses')
   const [ activeHouse, setActiveHouse ] = useGlobal('activeHouse')
