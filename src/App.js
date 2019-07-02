@@ -1,5 +1,6 @@
 import React, { useGlobal, useEffect } from 'reactn';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import ReactGA from 'react-ga';
 import "./App.css";
 
 import Map from "./components/map/Map";
@@ -7,9 +8,11 @@ import ListHouses from "./pages/listhouses/ListHouses";
 import AddHouse from "./pages/addhouse/AddHouse";
 import NotFound from "./pages/notfound/NotFound";
 
-import { API_URL } from "./Const";
+import { API_URL, TRACKING_ID } from "./Const";
 
 function App() {
+
+  ReactGA.initialize(TRACKING_ID);
 
   const [ allHouses, setAllHouses ] = useGlobal('allHouses');
   

@@ -1,4 +1,5 @@
 import React, { useGlobal, useState } from 'reactn'
+import ReactGA from 'react-ga';
 import "./AddHouse.css"
 
 import { Button, Form } from "react-bootstrap"
@@ -12,6 +13,8 @@ const ROOMS = [ "Studyo (1+0)", "1+1", "1.5+1", "2+0", "2+1", "2.5+1", "2+2", "3
 ];
 
 function AddHouseBox() {
+
+  ReactGA.pageview('/ekle');
 
   const [ addHouseLocation, setAddHouseLocation ] = useGlobal('addHouseLocation')
   const [ selectedRoom, setSelectedRoom ] = useState(ROOMS[0]);
@@ -81,6 +84,10 @@ function AddHouseBox() {
                   setContact("")
                   setDescription("")
                   setAddHouseLocation(null)
+                  ReactGA.event({
+                    category: 'House',
+                    action: 'Create an House'
+                  });
                 }).catch(err => {
                   setResponse("error code: " + err.status)
                 });
