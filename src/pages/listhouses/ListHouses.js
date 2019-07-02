@@ -54,7 +54,7 @@ function ListHousesBox() {
 
   return (
     <div className="list-houses-container">
-      <h1 className="header"><FaMapMarkedAlt className="icon" /> İyte Emlak</h1>
+      <h1 className="header"><FaMapMarkedAlt className="header-icon" /> İyte Emlak</h1>
       <div className="add-house">
         <Link to="/ekle">Ev Ekle</Link>
       </div>

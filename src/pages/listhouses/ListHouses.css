@@ -4,7 +4,7 @@
   padding: 20px;
 }
 
-.icon {
+.header-icon {
   margin-top: -8px;
 }
 
@@ -32,8 +32,8 @@
 .footer {
   text-align: center;
   padding-top: 4px;
-  height: 2rem;
-  line-height: 2rem;
+  height: 1.5rem;
+  line-height: 1.5rem;
   background-color: white;
 }
 
