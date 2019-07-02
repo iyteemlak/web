@@ -6,6 +6,36 @@ import { Button, Table } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 import { FaMapMarkerAlt, FaMapMarkedAlt, FaCaretUp, FaCaretDown, FaGithub, FaTrello } from 'react-icons/fa'
 
+function nextSorting(sort) {
+  if (sort == 'asc') {
+    return 'desc'
+  } else if (sort == 'desc') {
+    return null
+  } else {
+    return 'asc'
+  }
+}
+
+function sortRooms(houses, roomSort) {
+  if (roomSort === 'asc') {
+    return houses.sort((e1, e2) => e1.rooms > e2.rooms ? 1 : -1)
+  } else if (roomSort === 'desc') {
+    return houses.sort((e1, e2) => e2.rooms > e1.rooms ? 1 : -1)
+  } else {
+    return houses
+  }
+}
+
+function sortPrice (houses, priceSort) {
+  if (priceSort === 'asc') {
+    return houses.sort((e1, e2) => e1.price - e2.price)
+  } else if (priceSort === 'desc') {
+    return houses.sort((e1, e2) => e2.price - e1.price)
+  } else {
+    return houses
+  }
+}
+
 function ListHousesBox() {
 
   ReactGA.pageview('/');
@@ -14,42 +44,12 @@ function ListHousesBox() {
   const [ activeHouse, setActiveHouse ] = useGlobal('activeHouse')
   const [ map, setMap ] = useGlobal('map')
 
-  const [ roomSort, setRoomSort ] = useState(null);
+  const [ roomSort, setRoomSort ] = useState('asc');
   const [ priceSort, setPriceSort ] = useState(null);
 
   const panTo = (house) => {
     setActiveHouse(house)
     map.panTo(house.location)
-  }
-
-  const nextSorting = (sort) => {
-    if (sort == 'asc') {
-      return 'desc'
-    } else if (sort == 'desc') {
-      return null
-    } else {
-      return 'asc'
-    }
-  }
-
-  const sortRooms = (houses) => {
-    if (roomSort === 'asc') {
-      return houses.sort((e1, e2) => e1.rooms > e2.rooms ? -1 : 1)
-    } else if (roomSort === 'desc') {
-      return houses.sort((e1, e2) => e2.rooms > e1.rooms ? -1 : 1)
-    } else {
-      return houses
-    }
-  }
-
-  const sortPrice = (houses) => {
-    if (priceSort === 'asc') {
-      return houses.sort((e1, e2) => e1.price - e2.price)
-    } else if (priceSort === 'desc') {
-      return houses.sort((e1, e2) => e2.price - e1.price)
-    } else {
-      return houses
-    }
   }
 
   return (
@@ -75,7 +75,7 @@ function ListHousesBox() {
             </tr>
           </thead>
           <tbody>
-            {sortPrice(sortRooms(allHouses)).map((house, index) => {
+            {sortPrice(sortRooms(JSON.parse(JSON.stringify(allHouses)), roomSort), priceSort).map((house, index) => {
               return (
                 <tr key={index}>
                   <td>{house.rooms}</td>
