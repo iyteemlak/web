@@ -38,11 +38,11 @@ function sortPrice (houses, priceSort) {
 
 function handleContactFormat(phoneStr, callable){
   phoneStr = phoneStr.slice(phoneStr.indexOf("5"))
-  s2 = (""+phoneStr).replace(/\D/g, ''),
-  m = s2.match(/^(\d{3})?[- ]??[\s]?(\d{3})?[\s]?(\d{2})?[\s]?(\d{2})(.*)?$/);
+  let s2 = (""+phoneStr).replace(/\D/g, '');
+  let m = s2.match(/^(\d{3})?[- ]??[\s]?(\d{3})?[\s]?(\d{2})?[\s]?(\d{2})(.*)?$/);
   if (callable){
     // may be a problem with foreign phone numbers
-    phoneStr = (!m) ? null : "+90-" + m[1] + "-" + m[2] + "-" + m[3]+ "-" + m[4];
+    phoneStr = (!m) ? null : "tel:+90-" + m[1] + "-" + m[2] + "-" + m[3]+ "-" + m[4];
   } else {
     // may be a problem with foreign phone numbers
     phoneStr = (!m) ? null : "+90 " + m[1] + " " + m[2] + " " + m[3]+ " " + m[4];
@@ -94,7 +94,7 @@ function ListHousesBox() {
                 <tr key={index}>
                   <td>{house.rooms}</td>
                   <td>{house.price}TL</td>
-                  <td><a href={this.handleContactFormat(house.contact, true)}>{this.handleContactFormat(house.contact, false)}</a></td>
+                  <td><a href={handleContactFormat(house.contact, true)}>{handleContactFormat(house.contact, false)}</a></td>
                   <td>
                     {house.location !== null && house.location.lat !== null && 
                       <Button onClick={() => panTo(house)}>
