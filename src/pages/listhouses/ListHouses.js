@@ -109,8 +109,8 @@ function ListHousesBox() {
         </Table>
       </div>
       <footer className="footer">
-        <a href="https://github.com/iyteemlak" className="icon-container"><FaGithub className="icon" /></a>
-        <a href="https://trello.com/iyteemlakcom" className="icon-container"><FaTrello className="icon" /></a>
+        <a href="https://github.com/iyteemlak" className="icon-container" target="_blank"><FaGithub className="icon" /></a>
+        <a href="https://trello.com/iyteemlakcom" className="icon-container" target="_blank"><FaTrello className="icon" /></a>
       </footer>
     </div>
   )
