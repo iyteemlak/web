@@ -36,18 +36,29 @@ function sortPrice (houses, priceSort) {
   }
 }
 
-function handleContactFormat(phoneStr, callable){
-  phoneStr = phoneStr.slice(phoneStr.indexOf("5"))
-  let s2 = (""+phoneStr).replace(/\D/g, '');
-  let m = s2.match(/^(\d{3})?[- ]??[\s]?(\d{3})?[\s]?(\d{2})?[\s]?(\d{2})(.*)?$/);
-  if (callable){
-    // may be a problem with foreign phone numbers
-    phoneStr = (!m) ? null : "tel:+90-" + m[1] + "-" + m[2] + "-" + m[3]+ "-" + m[4];
+function handleContactFormat(phoneStr, clickable){
+  if (phoneStr.includes("@")){ // for emails
+    if (clickable){
+      return "mailto:" + phoneStr.trim().toLowerCase();
+    }
+    return phoneStr.trim().toLowerCase();
   } else {
-    // may be a problem with foreign phone numbers
-    phoneStr = (!m) ? null : "+90 " + m[1] + " " + m[2] + " " + m[3]+ " " + m[4];
+    let index = phoneStr.indexOf("5") // for +90 5XX XXX XXXX
+    if (index < 0 || index > 4){
+      index = phoneStr.indexOf("2") // for +90 2XX XXX XXXX
+    }
+    phoneStr = phoneStr.slice(index)
+    let s2 = (""+phoneStr).replace(/\D/g, '');
+    let m = s2.match(/^(\d{3})?[- ]??[\s]?(\d{3})?[\s]?(\d{2})?[\s]?(\d{2})(.*)?$/);
+    if (clickable){
+      // may be a problem with foreign phone numbers
+      phoneStr = (!m) ? null : "tel:+90-" + m[1] + "-" + m[2] + "-" + m[3]+ "-" + m[4];
+    } else {
+      // may be a problem with foreign phone numbers
+      phoneStr = (!m) ? null : "+90 " + m[1] + " " + m[2] + " " + m[3]+ " " + m[4];
+    }
+    return phoneStr;
   }
-	return phoneStr;
 }
 
 function ListHousesBox() {
